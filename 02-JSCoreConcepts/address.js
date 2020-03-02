@@ -14,5 +14,13 @@ ul. Długa 15
 POLAND
 */
 
-console.log(title, name, surname, street, city, zip, country);
-console.log(`${title} ${name} ${surname} ${street} ${city} ${zip} ${country}`);
+console.log(title, name, surname 
+    + '\n'+ 'ul.', street
+    + '\n'+ city, zip
+    + '\n' + country.toUpperCase());
+
+
+console.log(`${title} ${name} ${surname}
+ul. ${street}
+${city} ${zip}
+${country.toUpperCase()}`);
