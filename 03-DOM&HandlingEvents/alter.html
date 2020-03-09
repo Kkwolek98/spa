@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="changeBackground(this)">
+		<h1 onmousedown="addToTitle(this)">Another Brick in the Wall</h1>
+		<h3 onmousedown="showDesc()">Pink Floyd</h3>
+		<p oncopy="preventCopy(this); event.stopPropagation()" onmousedown="changeToItalics(this)">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,12 +15,33 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p onclick="addImage()" id="desc" style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
 		
 		<script>
-			// a JavaScript code here ...
+			function addToTitle(element) {
+				!element.innerHTML.endsWith("(Part 2)") ? element.innerHTML = element.innerHTML + " (Part 2)": element.innerHTML = element.innerHTML;
+			}
+			function showDesc() {
+				let el = document.getElementById('desc');
+				el.style.visibility = 'visible';
+			}
+			function changeToItalics(element) {
+				element.style.fontStyle = 'italic';
+			}
+			function changeBackground(element) {
+				element.style.background = 'yellow';
+			}
+			function preventCopy(element) {
+				event.stopPropagation();
+				alert('Copyright something');
+			}
+			function addImage() {
+				let img = document.createElement('img');
+				img.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg');
+				document.body.appendChild(img);
+			}
 			
 		</script>
 	</body>
