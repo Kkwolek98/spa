@@ -1,18 +1,48 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Student</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>Student</h1>
-		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data">
-		<p id="personalData"></p>
 
-		<script>
+<head>
+	<title>Student</title>
+	<meta charset="UTF-8">
+</head>
 
-		</script>
+<body>
+	<h1>Student</h1>
+	<p>Open a console and then click the button</p>
+	<input type="button" value="Display student's data">
+	<p id="personalData"></p>
 
-	</body>
+	<script>
+		function fetchData() {
+
+			return new Promise((resolve, reject) => {
+				const req = new XMLHttpRequest();
+				const URL = 'myData.json';
+
+				req.addEventListener('readystatechange', () => {
+					if (req.readyState === 4 && req.status === 200) {
+						const data = JSON.parse(req.responseText);
+						resolve(data)
+					} else if (req.readyState === 4) {
+						reject('error getting data');
+					}
+				})
+				req.open('GET', URL);
+				req.send();
+			})
+		}
+
+		const getData = () => {
+			fetchData()
+				.then(data => document.querySelector('p').textContent = `Hi, I am ${data.name} ${data.surname}`)
+				.catch(error => console.log('Error: ', error));
+		}
+		document.querySelector('input').addEventListener('click', getData)
+
+		//Due to CORS, it doesn't work on Chrome, Edge recommended
+
+	</script>
+
+</body>
+
 </html>
