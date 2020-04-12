@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h3>Check your courses:</h3>
+        <form>
+
+            <input type="checkbox" value="Mathematics" v-model="courses">
+            <label> Maths</label><br>
+            <input type="checkbox" value="Geography" v-model="courses">
+            <label> Geography</label><br>
+            <input type="checkbox" value="Geography" v-model="courses">
+            <label> Biology</label><br>
+            <input type="checkbox" value="Geography" v-model="courses">
+            <label> History</label><br>
+            <input type="checkbox" value="Phisics" v-model="courses">
+            <label> Physics</label><br>
+            <input type="checkbox" value="Informatics" v-model="courses">
+            <label> IT</label><br>
+            <input type="checkbox" value="English" v-model="courses">
+            <label> English</label>
+
+        </form>
+
+        <div>You have picked {{courses.length}} {{ courses.length == 1 ? 'course' : 'courses'}}</div>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                courses: []
+            },
+            methods: {
+
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>
