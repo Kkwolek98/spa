@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
+
+  <div id="app">
+    <p v-for="(item, index) in todo" :key="item"> {{index + 1}}. {{item}}</p>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -12,10 +18,12 @@
           'Purchase two tickets to cinema',
           'Feed cat',
           'Pay cable bill',
-          'Go shopping'
+          'Go shopping']
       }
+
     });
   </script>
 
 </body>
+
 </html>

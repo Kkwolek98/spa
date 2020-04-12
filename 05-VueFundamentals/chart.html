@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
+
 <body>
+
+  <div id="app">
+    <canvas id="myChart" width="400" height="200"> </canvas>
+  </div>
+
   <script>
     var app = new Vue({
       el: '#app',
@@ -29,9 +37,55 @@
             language: 'Php',
             popularity: 7.37
           }
-        ] 
+        ]
+      },
+      methods: {
+        drawChart: function () {
+          let ctx = document.getElementById('myChart').getContext('2d');
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: this.films.map(film => film.language),
+              datasets: [{
+                label: 'Programing Language Popularity',
+                data: this.films.map(film => film.popularity),
+                backgroundColor: 'rgba(100,111,125,0.6)',
+                pointStyle: 'line',
+                radius: 1,
+                pointBackgroundColor: 'rgba(0,0,0,1)'
+              }]
+            },
+            options: {
+              layout: {
+                padding: {
+                  left: 10,
+                  right: 10,
+                  top: 10,
+                  bottom: 10
+                }
+              },
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    min: 0,
+                    suggestedMax: 100
+                  }
+                }]
+              }
+            }
+
+          });
+        }
+      },
+      mounted() {
+        this.drawChart()
       }
     });
+
+
+
+
   </script>
 </body>
+
 </html>

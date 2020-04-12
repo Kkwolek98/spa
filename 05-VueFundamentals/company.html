@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
+
 <body>
+  <div id="app">
+    <div class="card">
+      <strong>{{company}}</strong>
+      <p>{{address}}</p>
+      <p>{{postcode}} {{city}}</p>
+      <p>tel. {{landline}}, {{mobile}}</p>
+      <a :href="web">{{web}}</a>
+    </div>
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
@@ -18,6 +29,15 @@
       }
     });
   </script>
+  <style>
+    .card {
+      border-style: solid;
+      width: 40%;
+      font-family: Arial, Helvetica, sans-serif;
+      text-align: center;
+    }
+  </style>
 
 </body>
+
 </html>
