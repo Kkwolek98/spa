@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Films</title>
+</head>
+
+<body>
+
+    <div id="app">
+        <movie v-for="movie in films" v-bind:movie="movie">></movie>
+    </div>
+
+    <script type="text/x-template" id="movie">
+        <div>
+            <h1>{{movie.title}}</h1>
+            <p>Reżyser: {{movie.director}}</p>
+            <p>Rok premiery: {{movie.premiere}}</p>
+        </div>
+    </script>
+
+    <script>
+
+        Vue.component('movie', {
+            props: ['movie'],
+            template: "#movie",
+        })
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                films: [
+                    {
+                        title: "Minecraft",
+                        director: "Peter Sollett",
+                        premiere: "2022"
+                    },
+                    {
+                        title: "Emoji Movie",
+                        director: "Tony Leondis",
+                        premiere: "2017"
+                    },
+                    {
+                        title: "Bee Movie",
+                        director: "Simon J. Smith, Steve Hickner",
+                        premiere: "2007"
+                    }
+
+                ]
+            }
+        })
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{university.name}}</h1>
+        <p>{{university.address.code}} {{university.address.city}},
+            {{university.address.street}}, {{university.address.country.toUpperCase()}}</p>
+    </div>
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            university: {
+                name: "Cracow University of Economics",
+                address: {
+                    code: "31-510",
+                    city: "Kraków",
+                    street: "Rakowicka 27",
+                    country: "Poland"
+                }
+            }
+        }
+    });
+</script>
+
+</html>
